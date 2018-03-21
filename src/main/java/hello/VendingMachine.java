@@ -2,7 +2,7 @@ package hello;
 
 public class VendingMachine {
 
-    public void dispenseProduct(){
-
+    public double returnChange(double totalAmount, double productPrice){
+        return totalAmount - productPrice;
     }
 }
