@@ -22,5 +22,9 @@ class ReturnChangeSpec extends Specification {
         then: "machine returns difference in total amount inserted and product price"
         result == 1.00;
     }
+    def "Return Change when Not Enough Money Entered"(){
+        given: "A vending Machine"
+        and:""
+    }
 
 }

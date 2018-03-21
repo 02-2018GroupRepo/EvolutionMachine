@@ -1,8 +1,8 @@
 package hello;
 
-public class VendingMachine {
+public class VendingMachine extends Machine {
 
-    public double returnChange(double totalAmount, double productPrice){
-        return totalAmount - productPrice;
+    public double returnChange(double totalAmountInsertedByCustomer, double productPrice){
+        return totalAmountInsertedByCustomer - productPrice;
     }
 }
