@@ -37,12 +37,18 @@ public class CoinManager {
         return confirmed;
     }
 
+    public void displayCustomerTotal(){
 
-
-
-    public void displayCustomerCoins(){
-        System.out.println("Quarters = " +customerQuarter+ ", Dimes = " +customerDime+ ", Nickels = " +customerNickel);
         System.out.println(customerTotalInputAmount());
     }
+
+    public String addCustomerCoinsToCM(){
+        nickel += customerNickel;
+        dime += customerDime;
+        quarter += customerQuarter;
+
+        return (nickel+ " " +dime+ " " +quarter);
+    }
+
 
 }
