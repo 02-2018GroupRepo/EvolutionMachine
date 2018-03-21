@@ -2,39 +2,38 @@ package hello;
 
 public class CoinManager {
 
-    private double totalCoinAmount = 0.00;
+    private int nickel = 30;
+    private int dime = 30;
+    private int quarter = 30;
+    private int customerNickel = 0;
+    private int customerDime = 0;
+    private int customerQuarter = 0;
 
-    public double getTotalCoinAmount() {
-        return totalCoinAmount;
-    }
-
-    public boolean validCoin(double coin){
-        boolean conformed = false;
-        if (coin == 0.25 || coin == 0.05 || coin == 0.10) {
-            conformed = true;
+    public void addCustomerCoins(String coin){
+        if(coin.equals("quarter")){
+            customerQuarter++;
+        }else if(coin.equals("dime")){
+            customerDime++;
+        }else {
+            customerNickel++;
         }
-        return conformed;
     }
 
-    public void addCoinsTogether(double coin){
-        if(validCoin(coin)){
-            totalCoinAmount += coin;
-        }
+    public double customerTotalInputAmount(){
+        double customerQuarterValue = customerQuarter * 0.25;
+        double customerDimeValue = customerDime * 0.10;
+        double customerNickelValue = customerNickel * 0.05;
 
+        return customerDimeValue + customerNickelValue + customerQuarterValue;
     }
 
-    public boolean hasExactChange(double product){
-        return getTotalCoinAmount() == product;
 
+
+
+
+    public void displayCustomerCoins(){
+        System.out.println("Quarters = " +customerQuarter+ ", Dimes = " +customerDime+ ", Nickels = " +customerNickel);
+        System.out.println(customerTotalInputAmount());
     }
-
-    public boolean hasEnoughForProduct(double product){
-        boolean hasEnough = false;
-        if(getTotalCoinAmount() >= product){
-            hasEnough = true;
-        }
-        return hasEnough;
-    }
-
 
 }
