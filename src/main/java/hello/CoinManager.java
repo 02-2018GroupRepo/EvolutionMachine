@@ -27,6 +27,15 @@ public class CoinManager {
         return customerDimeValue + customerNickelValue + customerQuarterValue;
     }
 
+    public boolean hasEnoughForProduct(Product product){
+        boolean confirmed = false;
+
+        if (customerTotalInputAmount() >= product.retailPrice){
+             confirmed = true;
+        }
+
+        return confirmed;
+    }
 
 
 
