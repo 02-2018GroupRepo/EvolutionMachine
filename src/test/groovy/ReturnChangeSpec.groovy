@@ -17,10 +17,10 @@ class ReturnChangeSpec extends Specification {
         (totalAmount > productPrice) == true;
 
         when: "machine dispenses product"
-        fakeVendingMachine.dispenseProduct();
+        double result = fakeVendingMachine.returnChange(totalAmount, productPrice);
 
         then: "machine returns difference in total amount inserted and product price"
-        double result = 1.00;
+        result == 1.00;
     }
 
 }
