@@ -1,6 +1,6 @@
 package hello;
 
-public class Machine {
+public class CoinManager {
 
     private double totalCoinAmount = 0.00;
 
