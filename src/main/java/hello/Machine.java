@@ -8,6 +8,14 @@ import java.util.*;
  */
 public class Machine {
 
+    public static void main(String[] args) {
+
+        String company = "Thank you for using The Evolution Machine!";
+        System.out.println(company);
+
+    }
+
+
     private String name;
     Map<String, Queue<Product>> mapComtProd;
     Map<Double, Integer> coinCart;
@@ -106,6 +114,8 @@ public class Machine {
         if(mapComtProd.get(index) == null || mapComtProd.get(index).size() == 0) {
             System.out.println("The compartment is empty");
         } else {
+
+            mapComtProd.get(index);
 
             /*
              *  From line number 114 to 217, I need functions from Nadario and Amber
