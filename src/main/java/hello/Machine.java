@@ -11,6 +11,7 @@ public class Machine {
     private String name;
 
     Map<String, Queue<Product>> mapComtProd;
+
     Map<Double, Integer> coinCart;
     Scanner input = new Scanner(System.in);
 

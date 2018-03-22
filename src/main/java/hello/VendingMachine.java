@@ -28,6 +28,10 @@ public class VendingMachine extends Machine {
         int machineNickelCount = 5;
 //                machineCoinCounts.getNickelCount();
 
+        if(totalAmountOfChange == 0){
+            return "Exact amount of coin entered";
+        }
+
         customerChangeQuarterAmount = (int) (coin / .25); //the number of quarters
         amount = (coin % .25);
         amount = Double.parseDouble(df.format(amount));
@@ -79,4 +83,9 @@ public class VendingMachine extends Machine {
 
         return returnChangeInCoinCount;
     }
+    public void returnExactChangeInserted(double totalAmount){
+
+    }
+
+
 }

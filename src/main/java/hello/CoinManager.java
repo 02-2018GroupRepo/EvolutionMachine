@@ -25,14 +25,14 @@ public class CoinManager {
         double customerQuarterValue = customerQuarter * 0.25;
         double customerDimeValue = customerDime * 0.10;
         double customerNickelValue = customerNickel * 0.05;
-
-        return customerDimeValue + customerNickelValue + customerQuarterValue;
+        double totalAmountInsertedByCustomer = customerDimeValue + customerNickelValue + customerQuarterValue;
+        return totalAmountInsertedByCustomer;
     }
 
     public boolean hasEnoughForProduct(Product product){
         boolean confirmed = false;
 
-        if (customerTotalInputAmount() >= product.retailPrice){
+        if (customerTotalInputAmount() >= product.getRetailPrice()){
              confirmed = true;
         }
 
@@ -43,7 +43,7 @@ public class CoinManager {
 
         System.out.println(customerTotalInputAmount());
     }
-
+//take out return statement
     public String addCustomerCoinsToCM(){
         nickel += customerNickel;
         dime += customerDime;
