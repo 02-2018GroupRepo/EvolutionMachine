@@ -1,12 +1,6 @@
 package hello;
 
 
-import com.sun.xml.internal.bind.v2.TODO;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
 public class Main {
 
     public static void main (String [] args) {
@@ -14,65 +8,27 @@ public class Main {
         Product kitkat = new Product("KitKat", 1, 1.50, 0.90, "Candy");
         Product twix = new Product("Twix", 2, 1.70, 1.20, "Candy");
 
-        Machine vendingMachine = new Machine();
-        vendingMachine.addItemToMachine(kitkat, "C6", 6);
-        vendingMachine.addItemToMachine(twix, "A2", 6);
+        DrinkMachine drinkMachine = new DrinkMachine();
+        drinkMachine.addItemToMachine(kitkat, "C6", 6);
+        drinkMachine.addItemToMachine(twix, "A2", 6);
 
-        List<String> inventoryList = new ArrayList<>();
-        inventoryList.add("A2 = Twix");
-        inventoryList.add("C6 = Kitkat");
+//        List<String> inventoryList = new ArrayList<>();
+//        inventoryList.add("A2 = Twix");
+//        inventoryList.add("C6 = Kitkat");
 
 
-//        vendingMachine.removeItem();
-//
-//        vendingMachine.viewCoinCart();
-//        vendingMachine.getSizeOfCompt("A1");
-//        vendingMachine.getSizeOfCompt("A2");
+        drinkMachine.removeItem();
 
-        Scanner scan = new Scanner(System.in);
-        CoinManager coinManager = new CoinManager();
+        drinkMachine.viewCoinCart();
+        drinkMachine.getSizeOfCompt("A1");
+        drinkMachine.getSizeOfCompt("A2");
 
-        boolean switchOut = true;
 
-        while(switchOut) {
-
-        System.out.println("\nEnter numbers 1 - 4 for the coin that you would like to insert");
-        System.out.printf("You currently have $%.2f inserted%n", coinManager.customerTotalInputAmount());
-        System.out.println("1: Quarter \n2: Dime \n3: Nickle \n4: I'm done entering coins. Product please!");
-
-        int userInput = scan.nextInt();
-        switch(userInput) {
-
-            case 1:
-
-                coinManager.addCustomerCoins("quarter");
-                break;
-
-            case 2:
-
-                coinManager.addCustomerCoins("dime");
-                break;
-
-            case 3:
-
-                coinManager.addCustomerCoins("nickel");
-                break;
-
-            case 4:
-
-                switchOut = false;
-                break;
-
-            default:
-
-                System.out.println("Seriously? It's just four choices");
-
-        }
             //System.out.printf("You currently have $%.2f inserted%n", coinManager.customerTotalInputAmount());
-            System.out.println("Please select a Product");
-            for(String item : inventoryList){
-                System.out.println(item);
-            }
+//            System.out.println("Please select a Product");
+//            for(String item : inventoryList){
+//                System.out.println(item);
+
             
 
             /**
@@ -85,8 +41,4 @@ public class Main {
             //TODO: If false, return customer coins method
 
         }
-
-
-
     }
-}

@@ -1,4 +1,4 @@
 package hello;
 
-public class SnackMachine extends VendingMachine {
+public class SnackMachine{
 }
