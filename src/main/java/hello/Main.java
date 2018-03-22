@@ -3,6 +3,8 @@ package hello;
 
 import com.sun.xml.internal.bind.v2.TODO;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -14,7 +16,12 @@ public class Main {
 
         Machine vendingMachine = new Machine();
         vendingMachine.addItemToMachine(kitkat, "C6", 6);
-       //vendingMachine.addItemToMachine(twix, "A2", 6);
+        vendingMachine.addItemToMachine(twix, "A2", 6);
+
+        List<String> inventoryList = new ArrayList<>();
+        inventoryList.add("A2 = Twix");
+        inventoryList.add("C6 = Kitkat");
+
 
 //        vendingMachine.removeItem();
 //
@@ -61,8 +68,12 @@ public class Main {
                 System.out.println("Seriously? It's just four choices");
 
         }
-            System.out.printf("You currently have $%.2f inserted%n", coinManager.customerTotalInputAmount());
-            //TODO: Select product method
+            //System.out.printf("You currently have $%.2f inserted%n", coinManager.customerTotalInputAmount());
+            System.out.println("Please select a Product");
+            for(String item : inventoryList){
+                System.out.println(item);
+            }
+            
 
             /**
              * use this method to confirm that the customer has enough for product
