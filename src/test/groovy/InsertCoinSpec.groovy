@@ -60,6 +60,41 @@ class InsertCoinSpec extends Specification {
         String result = coinManager3.addCustomerCoinsToCM()
         println result
     }
-    
+
+    def "Get the coin count for each coin type"(){
+
+        given: "A coin manager"
+        CoinManager coinManager4 = new CoinManager();
+        coinManager4.addCustomerCoins("dime")
+        coinManager4.addCustomerCoins("dime")
+        coinManager4.addCustomerCoins("dime")
+        coinManager4.addCustomerCoinsToCM()
+        when: "the count of a coin is requested"
+        int result = coinManager4.getCoinCount("dime")
+
+        then: "I get the total amount of coins for each type requested"
+        result == 33
+        println result
+
+    }
+
+    def "Get the total value of the coin for each type"(){
+
+        given: "A coin Manager"
+        CoinManager coinManager5 = new CoinManager();
+        coinManager5.addCustomerCoins("quarter")
+        coinManager5.addCustomerCoins("quarter")
+        coinManager5.addCustomerCoins("quarter")
+        coinManager5.addCustomerCoinsToCM()
+
+        when: "the total value of a coin is requested"
+        double result = coinManager5.getTotalCoinValue("quarter")
+
+        then: "I get the total value of the requested coin"
+
+        result == 8.25
+        println result
+    }
+
 
 }
