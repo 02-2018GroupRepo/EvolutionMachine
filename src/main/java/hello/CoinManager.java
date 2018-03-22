@@ -35,7 +35,7 @@ public class CoinManager {
     public boolean hasEnoughForProduct(Product product){
         boolean confirmed = false;
 
-        if (customerTotalInputAmount() >= product.retailPrice){
+        if (customerTotalInputAmount() >= product.getRetailPrice()){
              confirmed = true;
         }
 
