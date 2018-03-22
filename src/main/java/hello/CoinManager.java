@@ -52,5 +52,33 @@ public class CoinManager {
         return (nickel+ " " +dime+ " " +quarter);
     }
 
+    public int getCoinCount(String coin){
+        int coinCount = 0;
+        if(coin.equals("quarter")){
+            coinCount = quarter;
+        } else if(coin.equals("dime")){
+            coinCount = dime;
+        } else {
+            coinCount = nickel;
+        }
+
+        return coinCount;
+    }
+
+
+    public double getTotalCoinValue(String coin){
+        double totalCoinValue = 0;
+        if(coin.equals("quarter")){
+            totalCoinValue = getCoinCount("quarter") * 0.25;
+        } else if(coin.equals("dime")){
+            totalCoinValue = getCoinCount("dime") * 0.10;
+        } else {
+            totalCoinValue = getCoinCount("nickle") * 0.05;
+        }
+
+        return totalCoinValue;
+
+    }
+
 
 }
