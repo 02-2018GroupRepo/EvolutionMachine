@@ -1,72 +1,65 @@
 import hello.CoinManager
+import hello.Product
 import spock.lang.Specification
 
 
 class InsertCoinSpec extends Specification {
-    def "Check if coin is valid"(){
-        given: "A Coin Manager "
-        CoinManager coinManager = new CoinManager();
-
-        and: "a coin"
-        double coin1 = 0.17
-        double coin2 = 0.25
-
-        when: "The coin is equal to 0.25, 0.10, or 0.05"
-        boolean result1 = coinManager.validCoin(coin1)
-        boolean result2 = coinManager.validCoin(coin2)
-
-        then: "The coin is valid"
-        !result1
-        result2
-    }
+    Product drink = new Product(123);
 
 
-    def "Determining if the correct amount was inserted"(){
+    def "Determining if there is enough coins for selected product"() {
 
-        given: "Coin Manager"
+        given: "A coin manager"
+
         CoinManager coinManager1 = new CoinManager();
 
-        and: "Customer had inserted valid coins"
-        double coin1 = 0.25
-        coinManager1.validCoin(coin1)
-        double coin2 = 0.25
-        coinManager1.validCoin(coin2)
-        double coin3 = 0.35
-        coinManager1.validCoin(coin3)
+        and: "Coins are inserted"
+        coinManager1.addCustomerCoins("quarter")
+        coinManager1.addCustomerCoins("dime")
+        coinManager1.addCustomerCoins("nickel")
 
-        and: " The Coin Manager has determined total amount inserted"
-        coinManager1.addCoinsTogether(coin1)
-        coinManager1.addCoinsTogether(coin2);
-        coinManager1.addCoinsTogether(coin3)
+        when: "The customer's total is calculated"
+        coinManager1.customerTotalInputAmount();
 
-        when: "Customer selects product"
-        double drink = 0.50;
-
-        then: "Coin Manager determines if customer entered enough money for product"
+        then: "Compare if total is greater than or equal to the retail price of the selected product"
+        drink.setName("Drink")
+        drink.setRetailPrice(0.40)
         coinManager1.hasEnoughForProduct(drink)
+
+
     }
 
-    def "Exact Amount"(){
+    def "Get the total for customer"(){
 
-        given: "A vending machine"
-
+        given: "A coin manager"
         CoinManager coinManager2 = new CoinManager();
 
-        and: "A valid coin"
+        when: "The customer inserts a new coin"
+        coinManager2.addCustomerCoins("quarter")
+        coinManager2.addCustomerCoins("quarter")
 
-        double coin1 = 0.25;
-        double coin2 = 0.25;
-
-        when: "Exact Change is inserted for product"
-
-        coinManager2.addCoinsTogether(coin1);
-        coinManager2.addCoinsTogether(coin2);
-
-
-        then: "the customer receives product"
-        //dispense product group deals with this
-
-
+        then: "Return the value of coins inserted"
+        coinManager2.displayCustomerTotal()
     }
+
+    def "Add customer coins to coin manager"(){
+
+        given: "A coin manager"
+        CoinManager coinManager3 = new CoinManager();
+
+        and: "Customer coins"
+        coinManager3.addCustomerCoins("quarter")
+        coinManager3.addCustomerCoins("quarter")
+        coinManager3.addCustomerCoins("dime")
+        coinManager3.addCustomerCoins("nickel")
+
+        when: "Customer receives product"
+        //when product is dispensed to the customer
+
+        then: "Customer coins are added to coin manager"
+        String result = coinManager3.addCustomerCoinsToCM()
+        println result
+    }
+    
 
 }

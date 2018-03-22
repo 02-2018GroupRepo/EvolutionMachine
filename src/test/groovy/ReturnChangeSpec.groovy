@@ -17,14 +17,36 @@ class ReturnChangeSpec extends Specification {
         (totalAmount > productPrice) == true;
 
         when: "machine dispenses product"
-        double result = fakeVendingMachine.returnChange(totalAmount, productPrice);
+        double result = fakeVendingMachine.getChangeInDollarAmount(totalAmount, productPrice);
 
         then: "machine returns difference in total amount inserted and product price"
         result == 1.00;
     }
-    def "Return Change when Not Enough Money Entered"(){
-        given: "A vending Machine"
-        and:""
+
+    def "Return change amount in individual coin counts"(){
+        given: "total amount of change in dollar amount"
+        double totalAmountOfChange = 1.20
+
+        and:"A vending machine"
+        VendingMachine fakeVendingMachine = new VendingMachine();
+
+        and: "machine coin counts"
+        //stub in machine coin counts
+
+        when: "convert change to coin count"
+        String result = fakeVendingMachine.returnChangeInCoinCount(totalAmountOfChange);
+
+        then: "return coin count values"
+        result.equals("Your change is: " + "\n" + "Quarters: " + "5"
+                + "\n" + "Dimes: " + "2"
+                + "\n" + "Nickels: " + "0")
+
+
     }
+
+//    def "Return Change when Not Enough Money Entered"(){
+//        given: "A vending Machine"
+//    and:""
+//}
 
 }
