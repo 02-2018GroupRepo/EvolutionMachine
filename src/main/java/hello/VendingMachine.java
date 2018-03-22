@@ -35,14 +35,14 @@ public class VendingMachine extends Machine {
         customerChangeQuarterAmount = (int) (coin / .25); //the number of quarters
         amount = (coin % .25);
         amount = Double.parseDouble(df.format(amount));
-//        System.out.println("Quater Quantity: " + qAmount + " Left over: " + amount);
+
         if (customerChangeQuarterAmount <= machineQuarterCount){
             // the number of quarters needed in change is available. machine quarter count is subtracted by customer quarter count
-            machineQuarterCount = machineQuarterCount - customerChangeQuarterAmount;
+            machineCoinCounts.removeQuatersFromCM(customerChangeQuarterAmount);
         }else {
             double excessQuarterAmount = customerChangeQuarterAmount - machineQuarterCount;
             customerChangeQuarterAmount = machineQuarterCount;
-            machineQuarterCount = machineQuarterCount - customerChangeQuarterAmount;
+            machineCoinCounts.removeQuatersFromCM(machineQuarterCount);
             amount = amount + (excessQuarterAmount * 0.25);
         }
 
@@ -50,30 +50,29 @@ public class VendingMachine extends Machine {
         customerChangeDimeAmount = (int) (amount / .10);
         amount = amount % .10;
         amount = Double.parseDouble(df.format(amount));
-//        System.out.println("Dime Quantity: " + dAmount + " Left over: " + amount);
 
         if (customerChangeDimeAmount <= machineDimeCount){
-            // the number of quarters needed in change is available. machine quarter count is subtracted by customer quarter count
-            machineDimeCount = machineDimeCount - customerChangeDimeAmount;
+            // the number of Dimes needed in change is available. machine dime count is subtracted by customer dime count
+            machineCoinCounts.removeDimesFromCM(customerChangeDimeAmount);
         }else {
             double excessDimeAmount = customerChangeDimeAmount - machineDimeCount;
             customerChangeDimeAmount = machineDimeCount;
-            machineDimeCount = machineDimeCount - customerChangeDimeAmount;
+            machineCoinCounts.removeDimesFromCM(machineDimeCount);
             amount = amount + (excessDimeAmount * 0.10);
         }
 
         customerChangeNickelAmount = (int) (amount / .05);
         amount = amount % .05;
         amount = Double.parseDouble(df.format(amount));
-//        System.out.println("Nickle Quantity: " + nAmount + " Left over: " + amount);
 
         if (customerChangeNickelAmount <= machineNickelCount){
-            // the number of quarters needed in change is available. machine quarter count is subtracted by customer quarter count
-            machineNickelCount = machineNickelCount - customerChangeNickelAmount;
+            // the number of nickles needed in change is available. machine nickel count is subtracted by customer nickek count
+            machineCoinCounts.removeNickelsFromCM(customerChangeNickelAmount);
+
         }else {
             double excessNickelAmount = customerChangeNickelAmount - machineNickelCount;
             customerChangeNickelAmount = machineNickelCount;
-            machineNickelCount = machineNickelCount - customerChangeNickelAmount;
+            machineCoinCounts.removeNickelsFromCM(machineNickelCount);
             amount = amount + (excessNickelAmount * 0.05);
         }
 
@@ -83,7 +82,21 @@ public class VendingMachine extends Machine {
 
         return returnChangeInCoinCount;
     }
-    public void returnExactChangeInserted(double totalAmount){
+
+    //Return Less Than Change Scenario
+    public String returnExactChangeInserted(){
+       int customerReturnQuarterAmount = 4;
+//               machineCoinCounts.getCustomerQuarter();
+       int customerReturnDimeAmount = 0;
+//               machineCoinCounts.getCustomerDime();
+       int customerReturnNickelAmount = 0;
+//               machineCoinCounts.getCustomerNickel();
+
+       String returnCustomerCoinCount = "Not Enough Coins." + "\n" + "Quarters: " + customerReturnQuarterAmount
+               + "\n" + "Dimes: " + customerReturnDimeAmount
+               + "\n" + "Nickels: " + customerReturnNickelAmount;
+
+       return returnCustomerCoinCount;
 
     }
 

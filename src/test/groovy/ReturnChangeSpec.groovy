@@ -1,3 +1,4 @@
+import hello.CoinManager
 import hello.VendingMachine
 import spock.lang.Specification
 
@@ -67,7 +68,51 @@ class ReturnChangeSpec extends Specification {
         (totalAmount < retailPrice) == true;
 
         then: "Money inserted is returned"
-        vm.returnExactChangeInserted(totalAmount);
+        String result = vm.returnExactChangeInserted();
+
+        result.equals("Not Enough Coins." + "\n" + "Quarters: " + "4"
+                + "\n" + "Dimes: " + "0"
+                + "\n" + "Nickels: " + "0");
+    }
+
+    def "Remove quarters from machine total coins when total amount inserted in greater"(){
+        given: "a vending machine with a coin manager"
+        CoinManager cm = new CoinManager();
+
+        and: "quarters removed for change"
+        int quarterCountRemoved = 4;
+
+        when: "quarter is removed"
+        cm.removeQuatersFromCM(quarterCountRemoved);
+
+        then: "machine quarter count is reduced"
+        cm.getQuarter() == 26;
+    }
+    def "Remove nickels from machine total coins when total amount inserted in greater"(){
+        given: "a vending machine with a coin manager"
+        CoinManager cm = new CoinManager();
+
+        and: "nickels removed for change"
+        int nickelCountRemoved = 4;
+
+        when: "nickel is removed"
+        cm.removeNickelsFromCM(nickelCountRemoved);
+
+        then: "machine nickel count is reduced"
+        cm.getNickel() == 26;
+    }
+    def "Remove dimes from machine total coins when total amount inserted in greater"(){
+        given: "a vending machine with a coin manager"
+        CoinManager cm = new CoinManager();
+
+        and: "dimes removed for change"
+        int dimeCountRemoved = 4;
+
+        when: "dime is removed"
+        cm.removeDimesFromCM(dimeCountRemoved);
+
+        then: "machine dime count is reduced"
+        cm.getDime() == 26;
     }
 
 }

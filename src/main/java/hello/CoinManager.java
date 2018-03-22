@@ -12,6 +12,31 @@ public class CoinManager {
     //Noelle & Toby need a way to retrieve the total coin count of the MACHINE (getters)
     //TODO : RESPONSE - Its at the bottom as getTotalCoinManagerValue()
 
+
+    public int getNickel() {
+        return nickel;
+    }
+
+    public int getDime() {
+        return dime;
+    }
+
+    public int getQuarter() {
+        return quarter;
+    }
+
+    public int getCustomerNickel() {
+        return customerNickel;
+    }
+
+    public int getCustomerDime() {
+        return customerDime;
+    }
+
+    public int getCustomerQuarter() {
+        return customerQuarter;
+    }
+
     public void addCustomerCoins(String coin){
         if(coin.equals("quarter")){
             customerQuarter++;
@@ -23,6 +48,8 @@ public class CoinManager {
             System.out.println("Why would you do that? Use nickel, dime, quarter!!");
         }
     }
+
+
 
     public double customerTotalInputAmount(){
         double customerQuarterValue = customerQuarter * 0.25;
@@ -49,8 +76,21 @@ public class CoinManager {
 
     public void addCustomerCoinsToCM(){
         nickel += customerNickel;
+        customerNickel = 0;
         dime += customerDime;
+        customerDime = 0;
         quarter += customerQuarter;
+        customerQuarter = 0;
+    }
+
+    public void removeQuatersFromCM(int machineQuarterCount){
+        quarter = quarter - machineQuarterCount;
+    }
+    public void removeDimesFromCM(int machineDimeCount){
+        this.dime = dime - machineDimeCount;
+    }
+    public void removeNickelsFromCM(int machineNickelCount){
+        this.nickel = nickel - machineNickelCount;
     }
 
     public int getCoinCount(String coin){
