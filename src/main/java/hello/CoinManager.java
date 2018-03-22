@@ -10,14 +10,17 @@ public class CoinManager {
     private int customerQuarter = 0;
 
     //Noelle & Toby need a way to retrieve the total coin count of the MACHINE (getters)
+    //TODO : RESPONSE - Its at the bottom as getTotalCoinManagerValue()
 
     public void addCustomerCoins(String coin){
         if(coin.equals("quarter")){
             customerQuarter++;
         }else if(coin.equals("dime")){
             customerDime++;
-        }else {
+        }else if(coin.equals("nickel")){
             customerNickel++;
+        } else {
+            System.out.println("Why would you do that? Use nickel, dime, quarter!!");
         }
     }
 
@@ -25,8 +28,8 @@ public class CoinManager {
         double customerQuarterValue = customerQuarter * 0.25;
         double customerDimeValue = customerDime * 0.10;
         double customerNickelValue = customerNickel * 0.05;
-        double totalAmountInsertedByCustomer = customerDimeValue + customerNickelValue + customerQuarterValue;
-        return totalAmountInsertedByCustomer;
+
+        return customerDimeValue + customerNickelValue + customerQuarterValue;
     }
 
     public boolean hasEnoughForProduct(Product product){
@@ -43,13 +46,11 @@ public class CoinManager {
 
         System.out.println(customerTotalInputAmount());
     }
-//take out return statement
-    public String addCustomerCoinsToCM(){
+
+    public void addCustomerCoinsToCM(){
         nickel += customerNickel;
         dime += customerDime;
         quarter += customerQuarter;
-
-        return (nickel+ " " +dime+ " " +quarter);
     }
 
     public int getCoinCount(String coin){
@@ -58,8 +59,10 @@ public class CoinManager {
             coinCount = quarter;
         } else if(coin.equals("dime")){
             coinCount = dime;
-        } else {
+        } else if(coin.equals(("nickel"))) {
             coinCount = nickel;
+        } else {
+            System.out.println("NO NO NOOOOOOO, you better use nickel, dime, quarter");
         }
 
         return coinCount;
@@ -73,11 +76,19 @@ public class CoinManager {
         } else if(coin.equals("dime")){
             totalCoinValue = getCoinCount("dime") * 0.10;
         } else {
-            totalCoinValue = getCoinCount("nickle") * 0.05;
+            totalCoinValue = getCoinCount("nickel") * 0.05;
         }
 
         return totalCoinValue;
 
+    }
+
+    public double getTotalCoinManagerValue(){
+        double valueForQuarter = getTotalCoinValue("quarter");
+        double valueForDime = getTotalCoinValue("dime");
+        double valueForNickel = getTotalCoinValue("nickel");
+
+        return valueForDime + valueForNickel + valueForQuarter;
     }
 
 
