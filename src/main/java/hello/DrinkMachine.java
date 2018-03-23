@@ -8,19 +8,14 @@ import java.util.*;
  */
 public class DrinkMachine {
 
-
-
 //        String company = "Thank you for using The Evolution Machine!";
 //        System.out.println(company);
-
-
-
 
     private String name;
 
     Map<String, Queue<Product>> mapComtProd;
 
-    Map<Double, Integer> coinCart;
+   // Map<Double, Integer> coinCart;
     Scanner input = new Scanner(System.in);
 
     CoinManager drinkCoinManager;
@@ -28,12 +23,8 @@ public class DrinkMachine {
     public DrinkMachine() {
         drinkCoinManager = new CoinManager();
         mapComtProd = new HashMap<>();
-        coinCart = new HashMap<>();
-
-
+        //coinCart = new HashMap<>();
     }
-
-
 
     public void setName(String name) {
         this.name = name;
@@ -129,6 +120,7 @@ public class DrinkMachine {
                 queueOfProduct.remove();
                 mapComtProd.put(index,queueOfProduct);
                 System.out.println("You have purchased a " +queueOfProduct.peek().getName());
+                System.out.println("The price of your product is " + queueOfProduct.peek().getRetailPrice());
                 System.out.println(change);
 
             } else {
@@ -273,13 +265,11 @@ public class DrinkMachine {
     }
 
     public void viewCoinCart() {
-        double finalTotal = 0;
-        System.out.println(Collections.singletonList(coinCart));
-        for (Map.Entry<Double, Integer> cn : coinCart.entrySet()) {
-            double total = (cn.getKey() * cn.getValue());
-            finalTotal = total + finalTotal;
-        }
+        double finalTotal = drinkCoinManager.getTotalCoinManagerValue();
         finalTotal = Double.parseDouble(String.format("%.2f", finalTotal));
-        System.out.println("Your vending machine has total coins of $" + finalTotal);
+        System.out.println("Your machine has total coins of " + finalTotal);
+        System.out.println("Number of Quarters $0.25 = " + drinkCoinManager.getCoinCount("quarter") +
+        "\nNumber of Dimes $0.10 = " + drinkCoinManager.getCoinCount("dime") +
+        "\nNumber of Nickles $0.05 = " + drinkCoinManager.getCoinCount("nickel"));
     }
 }
