@@ -19,7 +19,7 @@ public class Main {
 
         drinkMachine.removeItem();
 
-        drinkMachine.viewCoinCart();
+//        drinkMachine.viewCoinCart();
         drinkMachine.getSizeOfCompt("A1");
         drinkMachine.getSizeOfCompt("A2");
 
