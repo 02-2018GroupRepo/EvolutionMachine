@@ -28,8 +28,6 @@ class ReturnChangeSpec extends Specification {
 
         and: "A coin manager"
         CoinManager cm = new CoinManager();
-        and: "machine coin counts"
-        //stub in machine coin counts
 
         when: "convert change to coin count"
         String result = cm.returnChangeInCoinCount(totalAmountOfChange)
@@ -61,7 +59,9 @@ class ReturnChangeSpec extends Specification {
         CoinManager cm = new CoinManager();
 
         and: "customer has inserted coins"
-        //stub in customer coin amounts here
+        cm.addCustomerCoins("quarter");
+        cm.addCustomerCoins("nickel");
+        cm.addCustomerCoins("nickel");
 
         when: "Total amount of change is less than amount of price"
         double totalAmount = 1.0
@@ -71,9 +71,9 @@ class ReturnChangeSpec extends Specification {
         then: "Money inserted is returned"
         String result = cm.returnCustomerChangeInserted();
 
-        result.equals("Not Enough Coins." + "\n" + "Quarters: " + "0"
+        result.equals("Not Enough Coins." + "\n" + "Quarters: " + "1"
                 + "\n" + "Dimes: " + "0"
-                + "\n" + "Nickels: " + "0");
+                + "\n" + "Nickels: " + "2");
     }
 
     def "Remove quarters from machine total coins when total amount inserted in greater"(){
