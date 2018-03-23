@@ -8,9 +8,9 @@ class AddLocationSpec extends Specification {
         given: "A machine with a state and id"
         Machine m1 = new Machine("Atlanta", "GA", "007")
 
-        when: "when a operator searches for a machine"
+        when: "when a operator searches for a machine by city"
         ArrayList<Machine> machineList = new ArrayList<Machine>()
-        machineList.add(m1)
+        machineList.add(m1)kk
         Machine mach;
         for(Machine m: machineList){
             if(m.location.getCity() == ("Atlanta")){
@@ -21,7 +21,7 @@ class AddLocationSpec extends Specification {
 //        println mach.getLocation().getCity()
 
         boolean isEqual = m1.getLocation().city
-        then: "a location has a new machine"
+        then: "the city where the machine is located is returned"
         isEqual==true
 
     }
