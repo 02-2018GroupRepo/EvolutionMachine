@@ -4,6 +4,29 @@ public class Machine {
 
     final String companyName = "Thank you for using The Evolution Machine!";
 
+    private Location location;
+
+    private String id;
+
+    private double totalMoneyValue;
+
+    private int quarterCount;
+
+    private int dimeCount;
+
+    private int nickelCount;
+
+
+
+    public Machine(String city,String state, String id){
+
+        location= new Location(city,state);
+        this.id=id;
+//        this.totalMoneyValue = 0;
+
+    }
+
+
     public String displayCompanyName (){
 
         System.out.println(companyName);
@@ -13,8 +36,47 @@ public class Machine {
     }
 
 
+    public Location getLocation() {
+        return location;
+    }
 
-//    public String getCompanyName() {
+    public String getId() {
+        return id;
+    }
+
+    public double getTotalMoneyValue() {
+        return totalMoneyValue;
+    }
+
+    public int getQuarterCount() {
+        return quarterCount;
+    }
+
+    public int getDimeCount() {
+        return dimeCount;
+    }
+
+    public int getNickelCount() {
+        return nickelCount;
+    }
+
+    public void setTotalMoneyValue(double totalMoneyValue) {
+        this.totalMoneyValue = totalMoneyValue;
+    }
+
+    public void setQuarterCount(int quarterCount) {
+        this.quarterCount = quarterCount;
+    }
+
+    public void setDimeCount(int dimeCount) {
+        this.dimeCount = dimeCount;
+    }
+
+    public void setNickelCount(int nickelCount) {
+        this.nickelCount = nickelCount;
+    }
+
+    //    public String getCompanyName() {
 //        return companyName;
 //    }
 }

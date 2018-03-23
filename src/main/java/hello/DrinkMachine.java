@@ -15,7 +15,9 @@ public class DrinkMachine extends Machine {
 
     CoinManager drinkCoinManager;
 
-    public DrinkMachine() {
+    public DrinkMachine(String city,String state, String id) {
+
+        super(city, state, id);
         drinkCoinManager = new CoinManager();
         mapComtProd = new HashMap<>();
     }
