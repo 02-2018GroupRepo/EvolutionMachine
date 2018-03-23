@@ -77,18 +77,18 @@ public class Machine {
         this.nickelCount = nickelCount;
     }
     // This needs to be checked.
-    public String searchMachineByLocation(Machine machine, String loc){
+    public String searchMachineByLocation(Machine machine){
         ArrayList<Machine> machineList = new ArrayList<Machine>();
         machineList.add(machine);
         Machine machine1;
         for(Machine m: machineList) {
-            if (m.location.getCity() == (loc)) {
+            if (m.location.getCity() == (machine.location.city)) {
                 machine1 = m;
             }
         }
 //        String mloc;
 //        mloc = machine.getLocation().city;
-        return machine1.location.getCity().toString();
+        return machine.location.getCity().toString();
     }
 
     //    public String getCompanyName() {
