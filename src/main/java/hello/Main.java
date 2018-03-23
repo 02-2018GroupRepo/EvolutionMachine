@@ -7,6 +7,7 @@ public class Main {
 
 
 
+
         Product kitkat = new Product("KitKat", 1, 1.50, 0.90, "Candy");
         Product twix = new Product("Twix", 2, 1.70, 1.20, "Candy");
 
@@ -22,7 +23,7 @@ public class Main {
 
         drinkMachine.removeItem();
 
-        drinkMachine.viewCoinCart();
+//        drinkMachine.viewCoinCart();
         drinkMachine.getSizeOfCompt("A1");
         drinkMachine.getSizeOfCompt("A2");
 

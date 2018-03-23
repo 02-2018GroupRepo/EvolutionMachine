@@ -8,9 +8,19 @@ import java.util.*;
  */
 public class DrinkMachine extends Machine {
 
+
+
+//        String company = "Thank you for using The Evolution Machine!";
+//        System.out.println(company);
+
+
+
+
     private String name;
 
     Map<String, Queue<Product>> mapComtProd;
+
+//    Map<Double, Integer> coinCart;
     Scanner input = new Scanner(System.in);
 
     CoinManager drinkCoinManager;
@@ -20,7 +30,12 @@ public class DrinkMachine extends Machine {
         super(city, state, id);
         drinkCoinManager = new CoinManager();
         mapComtProd = new HashMap<>();
+//        coinCart = new HashMap<>();
+
+
     }
+
+
 
     public void setName(String name) {
         this.name = name;
@@ -96,36 +111,42 @@ public class DrinkMachine extends Machine {
 
         System.out.println("Please enter the index");
         String index = input.next();
+        boolean powerdown = false;
 
-
-        if(mapComtProd.get(index) == null || mapComtProd.get(index).size() == 0) {
-            System.out.println("The compartment is empty");
-        } else  {
-            Queue<Product> queueOfProduct = mapComtProd.get(index);
-            drinkCoinManager.insertCoins();
-            double totalCustomer = drinkCoinManager.customerTotalInputAmount();
-            double productSelectedPrice = queueOfProduct.peek().getRetailPrice();
-            double totalAmountOfChange = drinkCoinManager.getChangeInDollarAmount(totalCustomer,productSelectedPrice);
-
-            boolean totalIsGreaterThenPrice = drinkCoinManager.hasEnoughForProduct(queueOfProduct.peek());
-
-            if(totalIsGreaterThenPrice == true) {
-                String change = drinkCoinManager.returnChangeInCoinCount(totalAmountOfChange);
-                drinkCoinManager.addCustomerCoinsToCM();
-
-                queueOfProduct.remove();
-                mapComtProd.put(index,queueOfProduct);
-                System.out.println("You have purchased a " +queueOfProduct.peek().getName());
-                System.out.println("The price of your product is " + queueOfProduct.peek().getRetailPrice());
-                System.out.println(change);
-
+        while (!powerdown) {
+            if (index.equals(operatorSecurityCode)){
+                getTotalMoneyValue();
+            }
+            else if (mapComtProd.get(index) == null || mapComtProd.get(index).size() == 0) {
+                System.out.println("The compartment is empty");
             } else {
-                String change = drinkCoinManager.returnCustomerChangeInserted();
-                System.out.println(change);
+                Queue<Product> queueOfProduct = mapComtProd.get(index);
+                drinkCoinManager.insertCoins();
+                double totalCustomer = drinkCoinManager.customerTotalInputAmount();
+                double productSelectedPrice = queueOfProduct.peek().getRetailPrice();
+                double totalAmountOfChange = drinkCoinManager.getChangeInDollarAmount(totalCustomer, productSelectedPrice);
+
+                boolean totalIsGreaterThenPrice = drinkCoinManager.hasEnoughForProduct(queueOfProduct.peek());
+
+                if (totalIsGreaterThenPrice == true) {
+                    String change = drinkCoinManager.returnChangeInCoinCount(totalAmountOfChange);
+                    drinkCoinManager.addCustomerCoinsToCM();
+
+                    queueOfProduct.remove();
+                    mapComtProd.put(index, queueOfProduct);
+                    System.out.println("You have purchased a " + queueOfProduct.peek().getName());
+                    System.out.println(change);
+
+                    setTotalMoneyValue(drinkCoinManager.getTotalCoinManagerValue());
+
+                } else {
+                    String change = drinkCoinManager.returnCustomerChangeInserted();
+                    System.out.println(change);
+                }
+//
             }
         }
     }
-
     public void viewItem(String index) {
         if(mapComtProd.get(index) == null || mapComtProd.get(index).size() == 0) {
             System.out.println("The compartment is empty ");
@@ -149,12 +170,14 @@ public class DrinkMachine extends Machine {
         }
     }
 
-    public void viewCoinCart() {
-        double finalTotal = drinkCoinManager.getTotalCoinManagerValue();
-        finalTotal = Double.parseDouble(String.format("%.2f", finalTotal));
-        System.out.println("Your machine has total coins of " + finalTotal);
-        System.out.println("Number of Quarters $0.25 = " + drinkCoinManager.getCoinCount("quarter") +
-        "\nNumber of Dimes $0.10 = " + drinkCoinManager.getCoinCount("dime") +
-        "\nNumber of Nickles $0.05 = " + drinkCoinManager.getCoinCount("nickel"));
-    }
+//    public void viewCoinCart() {
+//        double finalTotal = 0;
+//        System.out.println(Collections.singletonList(coinCart));
+//        for (Map.Entry<Double, Integer> cn : coinCart.entrySet()) {
+//            double total = (cn.getKey() * cn.getValue());
+//            finalTotal = total + finalTotal;
+//        }
+//        finalTotal = Double.parseDouble(String.format("%.2f", finalTotal));
+//        System.out.println("Your vending machine has total coins of $" + finalTotal);
+//    }
 }

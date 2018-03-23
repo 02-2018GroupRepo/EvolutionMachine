@@ -3,25 +3,21 @@ package hello;
 public class Machine {
 
     final String companyName = "Thank you for using The Evolution Machine!";
-
     private Location location;
-
-    private String machineId;
-
+    private String id;
     private double totalMoneyValue;
-
     private int quarterCount;
-
     private int dimeCount;
-
     private int nickelCount;
 
+    final String operatorSecurityCode = "pineapple";
 
 
-    public Machine(String city,String state, String machineId){
+
+    public Machine(String city,String state, String id){
 
         location= new Location(city,state);
-        this.machineId=machineId;
+        this.id=id;
 //        this.totalMoneyValue = 0;
 
     }
@@ -40,8 +36,8 @@ public class Machine {
         return location;
     }
 
-    public String getMachineId() {
-        return machineId;
+    public String getId() {
+        return id;
     }
 
     public double getTotalMoneyValue() {
