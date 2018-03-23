@@ -22,16 +22,6 @@ class MachineSpec extends Specification {
 
     }
 
-    def "Type and Location for each Machine"(){
-
-        given: "A machine"
-
-        when: "someone accesses the Machine"
-
-        then: "the Machine's Type and Location is displayed"
-
-    }
-
     def "Creating a Machine with a Location and ID"(){
 
         given: "a city, state, and id,"
