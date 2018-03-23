@@ -108,14 +108,17 @@ public class DrinkMachine extends Machine {
     }
 
     public void removeItem () {
-
-        System.out.println("Please enter the index");
-        String index = input.next();
         boolean powerdown = false;
-
         while (!powerdown) {
+        System.out.println("\nPlease enter the index");
+        String index = input.next();
+
+
             if (index.equals(operatorSecurityCode)){
-                getTotalMoneyValue();
+                System.out.println(getTotalMoneyValue());
+                System.out.println("Powerdown?");
+                String powerdownQuestion = input.next();
+
             }
             else if (mapComtProd.get(index) == null || mapComtProd.get(index).size() == 0) {
                 System.out.println("The compartment is empty");
