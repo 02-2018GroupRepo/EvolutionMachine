@@ -2,14 +2,15 @@ package hello;
 
 import java.util.*;
 
-public class SnackMachine{
+public class SnackMachine extends Machine{
 
     Scanner input = new Scanner(System.in);
     private String name;
     Map<String, Queue<Product>> mapComtProd;
     CoinManager snackCoinManager;
 
-    public SnackMachine() {
+    public SnackMachine(String city,String state, String id) {
+        super(city, state, id);
         snackCoinManager = new CoinManager();
         mapComtProd = new HashMap<>();
     }
@@ -81,6 +82,9 @@ public class SnackMachine{
                 System.out.println("You have purchased a " +queueOfProduct.peek().getName());
                 System.out.println("The price of your product is " + queueOfProduct.peek().getRetailPrice());
                 System.out.println(change);
+
+                setTotalMoneyValue(snackCoinManager.getTotalCoinManagerValue());
+
 
             } else {
                 String change = snackCoinManager.returnCustomerChangeInserted();

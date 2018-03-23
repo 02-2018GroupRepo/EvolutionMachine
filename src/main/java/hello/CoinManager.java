@@ -13,8 +13,6 @@ public class CoinManager {
     private int customerQuarter = 0;
 
     Scanner scan = new Scanner(System.in);
-    //Noelle & Toby need a way to retrieve the total coin count of the MACHINE (getters)
-    //TODO : RESPONSE - Its at the bottom as getTotalCoinManagerValue()
 
 
     public int getNickel() {

@@ -5,10 +5,14 @@ public class Main {
 
     public static void main (String [] args) {
 
+
+
+
         Product kitkat = new Product("KitKat", 1, 1.50, 0.90, "Candy");
         Product twix = new Product("Twix", 2, 1.70, 1.20, "Candy");
 
-        DrinkMachine drinkMachine = new DrinkMachine();
+        DrinkMachine drinkMachine = new DrinkMachine("Smyrna","GA","001A");
+        drinkMachine.displayCompanyName();
         drinkMachine.addItemToMachine(kitkat, "C6", 6);
         drinkMachine.addItemToMachine(twix, "A2", 6);
 
@@ -19,7 +23,7 @@ public class Main {
 
         drinkMachine.removeItem();
 
-        drinkMachine.viewCoinCart();
+//        drinkMachine.viewCoinCart();
         drinkMachine.getSizeOfCompt("A1");
         drinkMachine.getSizeOfCompt("A2");
 
