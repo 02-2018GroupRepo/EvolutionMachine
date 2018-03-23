@@ -1,5 +1,7 @@
 package hello;
 
+import java.util.ArrayList;
+
 public class Machine {
 
     final String companyName = "Thank you for using The Evolution Machine!";
@@ -73,6 +75,20 @@ public class Machine {
 
     public void setNickelCount(int nickelCount) {
         this.nickelCount = nickelCount;
+    }
+    // This needs to be checked.
+    public String searchMachineByLocation(Machine machine, String loc){
+        ArrayList<Machine> machineList = new ArrayList<Machine>();
+        machineList.add(machine);
+        Machine machine1;
+        for(Machine m: machineList) {
+            if (m.location.getCity() == (loc)) {
+                machine1 = m;
+            }
+        }
+//        String mloc;
+//        mloc = machine.getLocation().city;
+        return machine1.location.getCity().toString();
     }
 
     //    public String getCompanyName() {

@@ -10,7 +10,7 @@ class AddLocationSpec extends Specification {
 
         when: "when a operator searches for a machine by city"
         ArrayList<Machine> machineList = new ArrayList<Machine>()
-        machineList.add(m1)kk
+        machineList.add(m1)
         Machine mach;
         for(Machine m: machineList){
             if(m.location.getCity() == ("Atlanta")){
