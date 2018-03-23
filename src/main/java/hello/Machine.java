@@ -23,6 +23,9 @@ public class Machine {
     }
 
 
+
+
+
     public String displayCompanyName (){
 
         System.out.println(companyName);
