@@ -3,18 +3,14 @@ package hello;
 public class Machine {
 
     final String companyName = "Thank you for using The Evolution Machine!";
-
     private Location location;
-
     private String id;
-
     private double totalMoneyValue;
-
     private int quarterCount;
-
     private int dimeCount;
-
     private int nickelCount;
+
+    final String operatorSecurityCode = "pineapple";
 
 
 

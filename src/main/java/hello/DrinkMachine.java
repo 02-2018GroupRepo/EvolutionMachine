@@ -111,36 +111,42 @@ public class DrinkMachine extends Machine {
 
         System.out.println("Please enter the index");
         String index = input.next();
+        boolean powerdown = false;
 
-
-        if(mapComtProd.get(index) == null || mapComtProd.get(index).size() == 0) {
-            System.out.println("The compartment is empty");
-        } else  {
-            Queue<Product> queueOfProduct = mapComtProd.get(index);
-            drinkCoinManager.insertCoins();
-            double totalCustomer = drinkCoinManager.customerTotalInputAmount();
-            double productSelectedPrice = queueOfProduct.peek().getRetailPrice();
-            double totalAmountOfChange = drinkCoinManager.getChangeInDollarAmount(totalCustomer,productSelectedPrice);
-
-            boolean totalIsGreaterThenPrice = drinkCoinManager.hasEnoughForProduct(queueOfProduct.peek());
-
-            if(totalIsGreaterThenPrice == true) {
-                String change = drinkCoinManager.returnChangeInCoinCount(totalAmountOfChange);
-                drinkCoinManager.addCustomerCoinsToCM();
-
-                queueOfProduct.remove();
-                mapComtProd.put(index,queueOfProduct);
-                System.out.println("You have purchased a " +queueOfProduct.peek().getName());
-                System.out.println(change);
-
-            } else {
-                String change = drinkCoinManager.returnCustomerChangeInserted();
-                System.out.println(change);
+        while (!powerdown) {
+            if (index.equals(operatorSecurityCode)){
+                getTotalMoneyValue();
             }
+            else if (mapComtProd.get(index) == null || mapComtProd.get(index).size() == 0) {
+                System.out.println("The compartment is empty");
+            } else {
+                Queue<Product> queueOfProduct = mapComtProd.get(index);
+                drinkCoinManager.insertCoins();
+                double totalCustomer = drinkCoinManager.customerTotalInputAmount();
+                double productSelectedPrice = queueOfProduct.peek().getRetailPrice();
+                double totalAmountOfChange = drinkCoinManager.getChangeInDollarAmount(totalCustomer, productSelectedPrice);
+
+                boolean totalIsGreaterThenPrice = drinkCoinManager.hasEnoughForProduct(queueOfProduct.peek());
+
+                if (totalIsGreaterThenPrice == true) {
+                    String change = drinkCoinManager.returnChangeInCoinCount(totalAmountOfChange);
+                    drinkCoinManager.addCustomerCoinsToCM();
+
+                    queueOfProduct.remove();
+                    mapComtProd.put(index, queueOfProduct);
+                    System.out.println("You have purchased a " + queueOfProduct.peek().getName());
+                    System.out.println(change);
+
+                    setTotalMoneyValue(drinkCoinManager.getTotalCoinManagerValue());
+
+                } else {
+                    String change = drinkCoinManager.returnCustomerChangeInserted();
+                    System.out.println(change);
+                }
 //
+            }
         }
     }
-
     public void viewItem(String index) {
         if(mapComtProd.get(index) == null || mapComtProd.get(index).size() == 0) {
             System.out.println("The compartment is empty ");
