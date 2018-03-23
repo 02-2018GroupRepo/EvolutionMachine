@@ -30,15 +30,15 @@ class MachineSpec extends Specification {
 
         String state = "GA";
 
-        String id = "001"
+        String machineId = "001"
 
         when: "a Machine is created"
 
-        DrinkMachine dM = new DrinkMachine(city, state, id);
+        DrinkMachine dM = new DrinkMachine(city, state, machineId);
 
         then: "it is given a city, state, and ID"
 
-        dM.getId().equals("001");
+        dM.getMachineId().equals("001");
         dM.getLocation().getCity().equals("Smyrna");
         dM.getLocation().getState().equals("GA");
 

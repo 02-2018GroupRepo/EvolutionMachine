@@ -6,7 +6,7 @@ public class Machine {
 
     private Location location;
 
-    private String id;
+    private String machineId;
 
     private double totalMoneyValue;
 
@@ -18,10 +18,10 @@ public class Machine {
 
 
 
-    public Machine(String city,String state, String id){
+    public Machine(String city,String state, String machineId){
 
         location= new Location(city,state);
-        this.id=id;
+        this.machineId=machineId;
 //        this.totalMoneyValue = 0;
 
     }
@@ -40,8 +40,8 @@ public class Machine {
         return location;
     }
 
-    public String getId() {
-        return id;
+    public String getMachineId() {
+        return machineId;
     }
 
     public double getTotalMoneyValue() {
