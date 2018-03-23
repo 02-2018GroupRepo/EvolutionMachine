@@ -6,7 +6,7 @@ import java.util.*;
  * it also has two more shelves with 5 compartments with the size of 8
  * Valid indices are from A1 to A6, B1 to B6, C1 to C6, D1 to D5, E1 to E5
  */
-public class DrinkMachine {
+public class DrinkMachine extends Machine {
 
 
 
@@ -25,7 +25,9 @@ public class DrinkMachine {
 
     CoinManager drinkCoinManager;
 
-    public DrinkMachine() {
+    public DrinkMachine(String city,String state, String id) {
+
+        super(city, state, id);
         drinkCoinManager = new CoinManager();
         mapComtProd = new HashMap<>();
 //        coinCart = new HashMap<>();
