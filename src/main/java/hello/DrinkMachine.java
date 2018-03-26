@@ -115,9 +115,21 @@ public class DrinkMachine extends Machine {
 
 
             if (index.equals(operatorSecurityCode)){
-                System.out.println(getTotalMoneyValue());
+                System.out.println("Total Amount of money: $" +getTotalMoneyValue());
+                System.out.println("Total Amount of Quarters: " +getQuarterCount());
+                System.out.println("Total Amount of Dimes: " +getDimeCount());
+                System.out.println("Total Amount of Nickels:" +getNickelCount());
                 System.out.println("Powerdown?");
                 String powerdownQuestion = input.next();
+
+                if (powerdownQuestion.equals("y")) {
+                powerdown = true;
+                }
+
+                else {
+                    powerdown = false;
+
+                }
 
             }
             else if (mapComtProd.get(index) == null || mapComtProd.get(index).size() == 0) {
@@ -141,6 +153,9 @@ public class DrinkMachine extends Machine {
                     System.out.println(change);
 
                     setTotalMoneyValue(drinkCoinManager.getTotalCoinManagerValue());
+                    setQuarterCount(drinkCoinManager.getCoinCount("quarter"));
+                    setDimeCount(drinkCoinManager.getCoinCount("dime"));
+                    setNickelCount(drinkCoinManager.getCoinCount("nickel"));
 
                 } else {
                     String change = drinkCoinManager.returnCustomerChangeInserted();
